@@ -1,12 +1,11 @@
 package com.example.e_trash.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.e_trash.R
-import com.example.e_trash.helper.ConfiguracaoFirebase
 import com.example.e_trash.model.Usuario
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -43,5 +42,16 @@ class activity_login : AppCompatActivity() {
 
 	fun validarLogin(usuario: Usuario) {
 		// Initialize Firebase Auth
+		auth.signInWithEmailAndPassword(usuario.nome, usuario.senha).addOnCompleteListener(this) { task ->
+			if (task.isSuccessful) {
+				var intent = Intent(this, MainActivity::class.java)
+				startActivity(intent)
+				finish()
+			}
+			else {
+				// If sign in fails, display a message to the user.
+				Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+			}
+		}
 	}
 }
