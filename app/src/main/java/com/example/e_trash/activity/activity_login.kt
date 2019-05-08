@@ -21,14 +21,14 @@ class activity_login : AppCompatActivity() {
 		bt_login.setOnClickListener {
 
 			val textoEmail = et_login_email.text.toString()
-			val textoSenha = et_login_email.text.toString()
+			val textoSenha = et_login_senha.text.toString()
 
 			if (!textoEmail.isEmpty()) {
 				if (!textoSenha.isEmpty()) {
 					val usuario = Usuario()
 					usuario.email = textoEmail
 					usuario.senha = textoSenha
-					validarLogin(usuario)
+					//validarLogin(usuario)
 				}
 				else {
 					Toast.makeText(applicationContext, "Preencha a senha!", Toast.LENGTH_SHORT).show()
@@ -42,6 +42,10 @@ class activity_login : AppCompatActivity() {
 
 	fun validarLogin(usuario: Usuario) {
 		// Initialize Firebase Auth
+		/*if (auth == null) {
+			auth = FirebaseAuth.getInstance()
+		}*/
+		auth = FirebaseAuth.getInstance()
 		auth.signInWithEmailAndPassword(usuario.nome, usuario.senha).addOnCompleteListener(this) { task ->
 			if (task.isSuccessful) {
 				var intent = Intent(this, MainActivity::class.java)
