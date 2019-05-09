@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         bt_logout.setOnClickListener {
             deslogarUsuario()
-            var intent = Intent(this, login_activity::class.java)
+            var intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }

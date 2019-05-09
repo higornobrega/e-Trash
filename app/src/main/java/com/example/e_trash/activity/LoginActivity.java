@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class login_activity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private EditText campoEmail, campoSenha;
     private Button botaoLogin;
 
@@ -26,7 +26,7 @@ public class login_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_activity);
+        setContentView(R.layout.activity_login);
         verificarUsuarioLogado();
         inicializarComponentes();
 
@@ -45,11 +45,11 @@ public class login_activity extends AppCompatActivity {
                         validarLogin(usuario);
                     }
                     else {
-                        Toast.makeText(login_activity.this, "Preencha a senha!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Preencha a senha!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(login_activity.this, "Preencha o e-mail!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Preencha o e-mail!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -64,7 +64,7 @@ public class login_activity extends AppCompatActivity {
     }
 
     public void abrirCadastro(View view) {
-        Intent intent = new Intent(login_activity.this, cadastro_activity.class);
+        Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
         startActivity(intent);
     }
 
@@ -86,7 +86,7 @@ public class login_activity extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    Toast.makeText(login_activity.this, "Erro ao acessar a conta!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Erro ao acessar a conta!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

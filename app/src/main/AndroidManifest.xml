@@ -10,11 +10,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".activity.cadastro_activity"
+                android:name=".activity.CadastroActivity"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".activity.login_activity"
+                android:name=".activity.LoginActivity"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity

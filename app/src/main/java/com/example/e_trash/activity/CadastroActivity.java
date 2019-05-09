@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
 
-public class cadastro_activity extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
     private EditText campoNome, campoEmail, campoSenha;
     private Button botaoCadastro;
 
@@ -25,7 +25,7 @@ public class cadastro_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_activity);
+        setContentView(R.layout.activity_cadastro);
         inicializarComponentes();
 
         // Cadastrar usuario
@@ -46,16 +46,16 @@ public class cadastro_activity extends AppCompatActivity {
                             cadastrar(usuario);
                         }
                         else {
-                            Toast.makeText(cadastro_activity.this, "Preencha a senha!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CadastroActivity.this, "Preencha a senha!", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                     else {
-                        Toast.makeText(cadastro_activity.this, "Preencha o e-mail!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CadastroActivity.this, "Preencha o e-mail!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(cadastro_activity.this, "Preencha o nome!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Preencha o nome!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -78,8 +78,8 @@ public class cadastro_activity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(cadastro_activity.this, "Cadastro criado com sucesso!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), login_activity.class));
+                    Toast.makeText(CadastroActivity.this, "Cadastro criado com sucesso!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     finish();
                 }
                 else {
@@ -102,7 +102,7 @@ public class cadastro_activity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(cadastro_activity.this, "Erro: " + erroExcecao, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_SHORT).show();
                 }
             }
         });
