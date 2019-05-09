@@ -16,7 +16,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
 
 public class CadastroActivity extends AppCompatActivity {
-    private EditText campoNome, campoEmail, campoSenha;
+    private EditText campoNome;
+    private EditText campoEmail;
+    private EditText campoSenha;
     private Button botaoCadastro;
 
     private Usuario usuario;

@@ -17,7 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText campoEmail, campoSenha;
+    private EditText campoEmail;
+    private EditText campoSenha;
     private Button botaoLogin;
 
     private Usuario usuario;
