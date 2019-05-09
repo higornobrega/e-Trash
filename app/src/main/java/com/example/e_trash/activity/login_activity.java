@@ -40,7 +40,7 @@ public class login_activity extends AppCompatActivity {
                 if (!textoEmail.isEmpty()) {
                     if (!textoSenha.isEmpty()) {
                         usuario = new Usuario();
-                        usuario.setNome(textoEmail);
+                        usuario.setEmail(textoEmail);
                         usuario.setSenha(textoSenha);
                         validarLogin(usuario);
                     }
