@@ -38,7 +38,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_cadastro_nome"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:hint="E-mail" android:padding="12sp"
+            app:layout_constraintStart_toStartOf="parent" android:hint="@string/e_mail" android:padding="12sp"
             android:textColor="@color/colorWhite" android:textColorHighlight="@color/colorSecundary"
             android:textColorLink="@color/colorSecundary" android:textColorHint="@color/colorWhite"/>
     <EditText
@@ -50,7 +50,7 @@
             android:id="@+id/et_cadastro_senha" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/et_cadastro_email" android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:hint="Senha"
+            app:layout_constraintStart_toStartOf="parent" android:hint="@string/senha"
             android:textColorHint="@color/colorWhite" android:padding="12sp" android:textColor="@color/colorWhite"
             android:textColorHighlight="@color/colorSecundary" android:textColorLink="@color/colorSecundary"/>
     <Button
