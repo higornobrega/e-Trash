@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.e_trash.R;
 import com.example.e_trash.helper.ConfiguracaoFirebase;
@@ -57,9 +56,9 @@ public class login_activity extends AppCompatActivity {
     }
 
     public void inicializarComponentes() {
-        campoEmail = findViewById(R.id.et_cadastro_nome);
-        campoSenha = findViewById(R.id.et_cadastro_senha);
-        botaoLogin = findViewById(R.id.bt_cadastrar);
+        campoEmail = findViewById(R.id.et_login_email);
+        campoSenha = findViewById(R.id.et_login_senha);
+        botaoLogin = findViewById(R.id.bt_login);
 
         campoEmail.requestFocus();
     }

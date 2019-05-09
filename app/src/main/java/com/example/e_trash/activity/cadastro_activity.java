@@ -66,7 +66,7 @@ public class cadastro_activity extends AppCompatActivity {
         campoNome = findViewById(R.id.et_cadastro_nome);
         campoEmail = findViewById(R.id.et_cadastro_email);
         campoSenha = findViewById(R.id.et_cadastro_senha);
-        botaoCadastro = findViewById(R.id.bt_cadastrar);
+        botaoCadastro = findViewById(R.id.bt_cadastro);
 
         campoNome.requestFocus();
     }

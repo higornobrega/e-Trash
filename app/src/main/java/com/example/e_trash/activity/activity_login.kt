@@ -18,10 +18,10 @@ class activity_login : AppCompatActivity() {
 		setContentView(R.layout.activity_login)
 
 		// Fazer login do usuario
-		bt_cadastrar.setOnClickListener {
+		bt_login.setOnClickListener {
 
-			val textoEmail = et_cadastro_nome.text.toString()
-			val textoSenha = et_cadastro_senha.text.toString()
+			val textoEmail = et_login_email.text.toString()
+			val textoSenha = et_login_senha.text.toString()
 
 			if (!textoEmail.isEmpty()) {
 				if (!textoSenha.isEmpty()) {
