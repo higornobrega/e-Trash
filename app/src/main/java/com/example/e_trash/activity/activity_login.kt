@@ -18,17 +18,17 @@ class activity_login : AppCompatActivity() {
 		setContentView(R.layout.activity_login)
 
 		// Fazer login do usuario
-		bt_login.setOnClickListener {
+		bt_cadastrar.setOnClickListener {
 
-			val textoEmail = et_login_email.text.toString()
-			val textoSenha = et_login_senha.text.toString()
+			val textoEmail = et_cadastro_nome.text.toString()
+			val textoSenha = et_cadastro_senha.text.toString()
 
 			if (!textoEmail.isEmpty()) {
 				if (!textoSenha.isEmpty()) {
 					val usuario = Usuario()
 					usuario.email = textoEmail
 					usuario.senha = textoSenha
-					//validarLogin(usuario)
+					validarLogin(usuario)
 				}
 				else {
 					Toast.makeText(applicationContext, "Preencha a senha!", Toast.LENGTH_SHORT).show()
@@ -46,7 +46,8 @@ class activity_login : AppCompatActivity() {
 			auth = FirebaseAuth.getInstance()
 		}*/
 		auth = FirebaseAuth.getInstance()
-		auth.signInWithEmailAndPassword(usuario.nome, usuario.senha).addOnCompleteListener(this) { task ->
+
+		auth.signInWithEmailAndPassword(usuario.nome, usuario.senha).addOnCompleteListener { task ->
 			if (task.isSuccessful) {
 				var intent = Intent(this, MainActivity::class.java)
 				startActivity(intent)
@@ -57,5 +58,17 @@ class activity_login : AppCompatActivity() {
 				Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
 			}
 		}
+
+		/*auth.signInWithEmailAndPassword(usuario.nome, usuario.senha).addOnCompleteListener() { task ->
+			if (task.isSuccessful) {
+				var intent = Intent(this, MainActivity::class.java)
+				startActivity(intent)
+				finish()
+			}
+			else {
+				// If sign in fails, display a message to the user.
+				Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+			}
+		}*/
 	}
 }

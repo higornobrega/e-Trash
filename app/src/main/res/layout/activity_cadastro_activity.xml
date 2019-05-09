@@ -7,6 +7,15 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_login"
         tools:context=".activity.activity_login">
+    <ImageView
+            android:layout_width="170dp"
+            android:layout_height="230dp" app:srcCompat="@drawable/logo"
+            android:id="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.497" android:layout_marginTop="50dp"
+            app:layout_constraintTop_toTopOf="parent"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -17,25 +26,43 @@
             android:hint="Senha" android:textColor="@color/colorWhite" android:textColorHint="@color/colorWhite"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/et_cadastro_nome" android:padding="12dp"
-            android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorSecundary"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="12dp"
+            android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorSecundary"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/et_cadastro_email"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_texto_login"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/et_cadastro_nome"
+            android:hint="Nome completo" android:textColor="@color/colorWhite" android:textColorHint="@color/colorWhite"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="12dp"
+            android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorSecundary"
+            app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/background_texto_login"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/et_cadastro_nome"
+            android:id="@+id/et_cadastro_email"
             android:hint="E-mail" android:textColor="@color/colorWhite" android:textColorHint="@color/colorWhite"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             android:padding="12dp"
             android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorSecundary"
-            tools:layout_editor_absoluteY="296dp"/>
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/et_cadastro_nome"/>
     <Button
-            android:text="Entrar"
+            android:text="Cadastrar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/background_botao_login"
@@ -43,16 +70,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
-            app:layout_constraintHorizontal_bias="0.504" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/et_cadastro_senha"/>
-    <TextView
-            android:text="Cadastre-se"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_cadastro" android:textColor="@color/colorWhite"
-            android:textSize="16sp" android:textStyle="bold"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/bt_cadastrar"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/et_cadastro_senha"/>
 </android.support.constraint.ConstraintLayout>

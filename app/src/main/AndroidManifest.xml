@@ -10,6 +10,12 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".activity.cadastro_activity"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".activity.login_activity">
+        </activity>
+        <activity
                 android:name=".activity.SplashActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -18,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.activity_login"
-                    android:theme="@style/AppTheme.NoActionBar">
+        <activity
+                android:name=".activity.activity_login"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".activity.MainActivity">
         </activity>
