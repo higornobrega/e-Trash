@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ic_pontos_coleta"
+          android:icon="@drawable/ic_pontos_coleta_24dp"
+          android:title="Pontos de coleta" />
+
+    <item android:id="@+id/ic_agendamentos"
+          android:icon="@drawable/ic_agendamento_24dp"
+          android:title="Agendamentos" />
+
+    <item android:id="@+id/ic_cadastrar_lixo"
+          android:icon="@drawable/ic_add_lixo_24dp"
+          android:title="Cadastrar lixo" />
+
+    <item android:id="@+id/ic_perfil"
+          android:icon="@drawable/ic_perfil_24dp"
+          android:title="Perfil" />
+
+</menu>
