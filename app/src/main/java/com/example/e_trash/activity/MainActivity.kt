@@ -3,11 +3,14 @@ package com.example.e_trash.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.view.Menu
 import android.view.MenuItem
 import com.example.e_trash.R
+import com.example.e_trash.fragment.PerfilFragment
 import com.example.e_trash.helper.ConfiguracaoFirebase
 import com.google.firebase.auth.FirebaseAuth
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +24,13 @@ class MainActivity : AppCompatActivity() {
         // Configurar a Toolbar
         toolbarPrincipal.setTitle("e-Trash")
         setSupportActionBar(toolbarPrincipal)
+
+        // BottomNavigation Fragment
+        configurarBottomNavigationView()
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
+
     }
 
     fun deslogarUsuario() {
@@ -46,5 +56,34 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_deslogar -> deslogarUsuario()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun configurarBottomNavigationView() {
+        val bottomNavigationViewEx: BottomNavigationViewEx = findViewById(R.id.bottomNavigation)
+
+        bottomNavigationViewEx.enableAnimation(true)
+
+        habilitarNavegacao(bottomNavigationViewEx)
+
+        // Configura item selecionado inicialmente
+        val menu: Menu = bottomNavigationViewEx.menu
+        val menuItem: MenuItem = menu.getItem(3)
+        menuItem.setChecked(true)
+
+    }
+
+    private fun habilitarNavegacao(viewEx: BottomNavigationViewEx) {
+        viewEx.onNavigationItemSelectedListener =
+            BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+                val fragmentManager = supportFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                when (menuItem.itemId) {
+//                    R.id.ic_pontos_coleta -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
+//                    R.id.ic_agendamentos -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
+//                    R.id.ic_cadastrar_lixo -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
+                    R.id.ic_perfil -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
+                }
+                false
+            }
     }
 }
