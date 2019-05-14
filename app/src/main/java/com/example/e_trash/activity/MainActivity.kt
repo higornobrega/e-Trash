@@ -7,7 +7,10 @@ import android.support.design.widget.BottomNavigationView
 import android.view.Menu
 import android.view.MenuItem
 import com.example.e_trash.R
+import com.example.e_trash.fragment.AgendamentoFragment
+import com.example.e_trash.fragment.CadastrarLixoFragment
 import com.example.e_trash.fragment.PerfilFragment
+import com.example.e_trash.fragment.PontoDeColetaFragment
 import com.example.e_trash.helper.ConfiguracaoFirebase
 import com.google.firebase.auth.FirebaseAuth
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         configurarBottomNavigationView()
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
+        fragmentTransaction.replace(R.id.viewPager, PontoDeColetaFragment()).commit()
 
     }
 
@@ -62,14 +65,14 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationViewEx: BottomNavigationViewEx = findViewById(R.id.bottomNavigation)
 
         bottomNavigationViewEx.enableAnimation(true)
+        bottomNavigationViewEx.setTextVisibility(false)
 
         habilitarNavegacao(bottomNavigationViewEx)
 
         // Configura item selecionado inicialmente
         val menu: Menu = bottomNavigationViewEx.menu
-        val menuItem: MenuItem = menu.getItem(3)
+        val menuItem: MenuItem = menu.getItem(0)
         menuItem.setChecked(true)
-
     }
 
     private fun habilitarNavegacao(viewEx: BottomNavigationViewEx) {
@@ -78,9 +81,9 @@ class MainActivity : AppCompatActivity() {
                 val fragmentManager = supportFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
                 when (menuItem.itemId) {
-//                    R.id.ic_pontos_coleta -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
-//                    R.id.ic_agendamentos -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
-//                    R.id.ic_cadastrar_lixo -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
+                    R.id.ic_pontos_coleta -> fragmentTransaction.replace(R.id.viewPager, PontoDeColetaFragment()).commit()
+                    R.id.ic_agendamentos -> fragmentTransaction.replace(R.id.viewPager, AgendamentoFragment()).commit()
+                    R.id.ic_cadastrar_lixo -> fragmentTransaction.replace(R.id.viewPager, CadastrarLixoFragment()).commit()
                     R.id.ic_perfil -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
                 }
                 false
