@@ -76,7 +76,7 @@ public class PerfilFragment extends Fragment {
         nomePerfil = view.findViewById(R.id.nomePerfil);
 
         //Abre edição de perfil
-        avatar.setOnClickListener(new View.OnClickListener(){
+        bt_editar_perfil.setOnClickListener(new View.OnClickListener(){
             @Override
                 public void onClick(View v){
                 Intent i = new Intent(getActivity(), EditarPerfilActivity.class);
