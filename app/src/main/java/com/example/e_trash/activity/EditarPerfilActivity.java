@@ -2,6 +2,7 @@ package com.example.e_trash.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.e_trash.R;
 
 public class EditarPerfilActivity extends AppCompatActivity {
 
