@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         auth = ConfiguracaoFirebase.getReferenciaAutenticacao()
 
         // Configurar a Toolbar
-        toolbarPrincipal.setTitle("e-Trash")
-        setSupportActionBar(toolbarPrincipal)
+        //toolbarPrincipal.setTitle("e-Trash")
+        //setSupportActionBar(toolbarPrincipal)
 
         // BottomNavigation Fragment
         configurarBottomNavigationView()
@@ -48,18 +48,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId) {
-            R.id.menu_deslogar -> deslogarUsuario()
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.menu_main, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+//        when(item?.itemId) {
+//            R.id.menu_deslogar -> deslogarUsuario()
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     private fun configurarBottomNavigationView() {
         val bottomNavigationViewEx: BottomNavigationViewEx = findViewById(R.id.bottomNavigation)
