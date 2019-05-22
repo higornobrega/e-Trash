@@ -1,6 +1,5 @@
 package com.example.e_trash
 
-import com.example.e_trash.model.Usuario
 import org.junit.Test
 
 import org.junit.Assert.*
