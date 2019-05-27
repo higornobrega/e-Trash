@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class EditarPerfilActivity extends AppCompatActivity {
 
     private ImageView avatar;
-    private TextView testAlterarFoto;
+    private TextView textAlterarFoto;
     private TextInputEditText editNomePerfil;
     private Button buttonSalvarAlteracoes;
     @Override
@@ -27,6 +27,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
         //Botão voltar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+
+        //Recuperar dados do Usuário
         inicializarComponentes();
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
         editNomePerfil.setText( usuarioPerfil.getDisplayName());
@@ -34,7 +36,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     }
     public void inicializarComponentes(){
         avatar = findViewById(R.id.avatar);
-        testAlterarFoto = findViewById(R.id.testAlterarFoto);
+        textAlterarFoto = findViewById(R.id.textAlterarFoto);
         editNomePerfil = findViewById(R.id.editNomePerfil);
         buttonSalvarAlteracoes = findViewById(R.id.buttonSalvarAlteracoes);
     }

@@ -63,4 +63,6 @@ public class CadastrarLixoFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_cadastrar_lixo, container, false);
     }
 
+
+
 }

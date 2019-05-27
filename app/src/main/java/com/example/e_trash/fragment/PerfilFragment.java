@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import com.example.e_trash.R;
 import com.example.e_trash.activity.EditarPerfilActivity;
+import com.example.e_trash.helper.UsuarioFirebase;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,15 +78,15 @@ public class PerfilFragment extends Fragment {
         nomePerfil = view.findViewById(R.id.nomePerfil);
 
         //Abre edição de perfil
-        bt_editar_perfil.setOnClickListener(new View.OnClickListener(){
+        bt_editar_perfil.setOnClickListener(new View.OnClickListener() {
             @Override
-                public void onClick(View v){
+            public void onClick(View v) {
                 Intent i = new Intent(getActivity(), EditarPerfilActivity.class);
                 startActivity(i);
 
-                }
+            }
 
-    });
+        });
 
         return view;
     }
