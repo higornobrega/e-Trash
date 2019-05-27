@@ -74,15 +74,23 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     // Metodo responsavel por cadastrar o usuario com email e senha e fazer validacoes ao fazer o cadastro
-    public void cadastrar(Usuario usuario) {
+    public void cadastrar(final Usuario usuario) {
         autenticacao = ConfiguracaoFirebase.getReferenciaAutenticacao();
         autenticacao.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(CadastroActivity.this, "Cadastro criado com sucesso!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    finish();
+                    try{
+                        String idUsuario = task.getResult().getUser().getUid();
+                        usuario.setId(idUsuario);
+                        usuario.salvar();
+                        Toast.makeText(CadastroActivity.this, "Cadastro criado com sucesso!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        finish();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
                 }
                 else {
                     String erroExcecao = "";
