@@ -21,7 +21,7 @@
         <TextView
                 android:text="Alterar foto"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView2" android:textAlignment="center"
+                android:layout_height="wrap_content" android:id="@+id/testAlterarFoto" android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark" android:textStyle="bold"/>
         <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -31,12 +31,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nome Usuário" android:drawableLeft="@drawable/ic_perfil_24dp"
-                    android:drawableTint="@android:color/darker_gray"/>
+                    android:drawableTint="@android:color/darker_gray" android:id="@+id/editNomePerfil"/>
         </android.support.design.widget.TextInputLayout>
         <Button
                 android:text="SALVAR ALTERAÇÃO"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button"/>
+                android:layout_height="wrap_content" android:id="@+id/buttonSalvarAlteracoes"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.e_trash.R;
 import com.example.e_trash.helper.ConfiguracaoFirebase;
+import com.example.e_trash.helper.UsuarioFirebase;
 import com.example.e_trash.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -84,6 +85,8 @@ public class CadastroActivity extends AppCompatActivity {
                         String idUsuario = task.getResult().getUser().getUid();
                         usuario.setId(idUsuario);
                         usuario.salvar();
+
+                        UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
                         Toast.makeText(CadastroActivity.this, "Cadastro criado com sucesso!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         finish();
