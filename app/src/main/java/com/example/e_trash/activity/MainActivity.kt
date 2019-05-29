@@ -1,92 +1,106 @@
 package com.example.e_trash.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.view.Menu
+import android.support.design.widget.FloatingActionButton
+import android.support.design.widget.Snackbar
+import android.support.v4.view.GravityCompat
+import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
+import android.support.v4.widget.DrawerLayout
+import android.support.design.widget.NavigationView
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
+import android.view.Menu
 import com.example.e_trash.R
-import com.example.e_trash.fragment.AgendamentoFragment
-import com.example.e_trash.fragment.CadastrarLixoFragment
-import com.example.e_trash.fragment.PerfilFragment
-import com.example.e_trash.fragment.PontoDeColetaFragment
-import com.example.e_trash.helper.ConfiguracaoFirebase
 import com.google.firebase.auth.FirebaseAuth
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-import kotlinx.android.synthetic.main.toolbar.*
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+	private lateinit var auth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        auth = ConfiguracaoFirebase.getReferenciaAutenticacao()
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_main)
+		val toolbar: Toolbar = findViewById(R.id.toolbar)
+		setSupportActionBar(toolbar)
 
-        // Configurar a Toolbar
-        //toolbarPrincipal.setTitle("e-Trash")
-        //setSupportActionBar(toolbarPrincipal)
+		val fab: FloatingActionButton = findViewById(R.id.fab)
+		fab.setOnClickListener { view ->
+			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+				.setAction("Action", null).show()
+		}
+		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+		val navView: NavigationView = findViewById(R.id.nav_view)
+		val toggle = ActionBarDrawerToggle(
+			this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+		)
+		drawerLayout.addDrawerListener(toggle)
+		toggle.syncState()
 
-        // BottomNavigation Fragment
-        configurarBottomNavigationView()
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.viewPager, PontoDeColetaFragment()).commit()
+		navView.setNavigationItemSelectedListener(this)
+	}
 
-    }
+	override fun onBackPressed() {
+		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+		if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+			drawerLayout.closeDrawer(GravityCompat.START)
+		} else {
+			super.onBackPressed()
+		}
+	}
 
-    fun deslogarUsuario() {
-        try {
-            auth.signOut()
-            var intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+	override fun onCreateOptionsMenu(menu: Menu): Boolean {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		menuInflater.inflate(R.menu.main, menu)
+		return true
+	}
+
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		when(item?.itemId) {
+            R.id.action_logout -> deslogarUsuario()
         }
-        catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+        return super.onOptionsItemSelected(item)
+	}
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        menuInflater.inflate(R.menu.menu_main, menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-//        when(item?.itemId) {
-//            R.id.menu_deslogar -> deslogarUsuario()
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
+	override fun onNavigationItemSelected(item: MenuItem): Boolean {
+		// Handle navigation view item clicks here.
+		when (item.itemId) {
+			R.id.nav_home -> {
+				// Handle the camera action
+			}
+			R.id.nav_gallery -> {
 
-    private fun configurarBottomNavigationView() {
-        val bottomNavigationViewEx: BottomNavigationViewEx = findViewById(R.id.bottomNavigation)
+			}
+			R.id.nav_slideshow -> {
 
-        bottomNavigationViewEx.enableAnimation(true)
-        bottomNavigationViewEx.setTextVisibility(false)
+			}
+			R.id.nav_tools -> {
 
-        habilitarNavegacao(bottomNavigationViewEx)
+			}
+			R.id.nav_share -> {
 
-        // Configura item selecionado inicialmente
-        val menu: Menu = bottomNavigationViewEx.menu
-        val menuItem: MenuItem = menu.getItem(0)
-        menuItem.setChecked(true)
-    }
+			}
+			R.id.nav_send -> {
 
-    private fun habilitarNavegacao(viewEx: BottomNavigationViewEx) {
-        viewEx.onNavigationItemSelectedListener =
-            BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-                val fragmentManager = supportFragmentManager
-                val fragmentTransaction = fragmentManager.beginTransaction()
-                when (menuItem.itemId) {
-                    R.id.ic_pontos_coleta -> fragmentTransaction.replace(R.id.viewPager, PontoDeColetaFragment()).commit()
-                    R.id.ic_agendamentos -> fragmentTransaction.replace(R.id.viewPager, AgendamentoFragment()).commit()
-                    R.id.ic_cadastrar_lixo -> fragmentTransaction.replace(R.id.viewPager, CadastrarLixoFragment()).commit()
-                    R.id.ic_perfil -> fragmentTransaction.replace(R.id.viewPager, PerfilFragment()).commit()
-                }
-                false
-            }
-    }
+			}
+		}
+		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+		drawerLayout.closeDrawer(GravityCompat.START)
+		return true
+	}
+
+	fun deslogarUsuario() {
+		try {
+			auth.signOut()
+			var intent = Intent(this, LoginActivity::class.java)
+			startActivity(intent)
+			finish()
+		}
+		catch (e: Exception) {
+			e.printStackTrace()
+		}
+	}
 }
