@@ -100,11 +100,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 	override fun onNavigationItemSelected(item: MenuItem): Boolean {
 		// Handle navigation view item clicks here.
 		when (item.itemId) {
-			R.id.nav_home -> {
-				val intent = Intent(this, MapsActivity::class.java)
-				startActivity(intent)
+			R.id.nav_perfil -> {
+
 			}
-			R.id.nav_gallery -> {
+			R.id.nav_agendamentos -> {
 
 			}
 			R.id.nav_slideshow -> {
