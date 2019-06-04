@@ -3,6 +3,8 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="e_mail">E-mail</string>
     <string name="senha">Senha</string>
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -19,6 +21,6 @@
     <string name="menu_agendamentos">Agendamentos</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_add_ponto_coleta">Adicionar ponto de coleta</string>
+    <string name="menu_rem_ponto_coleta">Remover ponto de coleta</string>
 </resources>

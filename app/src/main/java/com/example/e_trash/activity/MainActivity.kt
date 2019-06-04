@@ -29,6 +29,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 				val longitude: Double = location.longitude
 				val localUsuario = LatLng(latitude, longitude)
 				mMap.clear()
-				mMap.addMarker(MarkerOptions().position(localUsuario).title("Você está aqui"))
+				mMap.addMarker(MarkerOptions().position(localUsuario).title("Você está aqui").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)))
 				mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(localUsuario, 15.0f))
 			}
 			override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
@@ -188,10 +189,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 			R.id.nav_tools -> {
 
 			}
-			R.id.nav_share -> {
-
+			R.id.nav_add_ponto_coleta -> {
+				val intent = Intent(this, AdicionarPontoDeColeta::class.java)
+				startActivity(intent)
 			}
-			R.id.nav_send -> {
+			R.id.nav_rem_ponto_coleta -> {
 
 			}
 		}
