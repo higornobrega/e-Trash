@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_login"
         tools:context=".activity.AdicionarPontoDeColeta">
     <EditText
             android:layout_width="0dp"
@@ -14,7 +15,11 @@
             android:id="@+id/et_nome_ponto_coleta" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:hint="Nome do local"/>
+            app:layout_constraintTop_toTopOf="parent" android:hint="@string/nome_local"
+            android:textColorHint="@color/colorWhite" android:textColor="@color/colorWhite"
+            android:textColorHighlight="@color/colorSecundary" android:textColorLink="@color/colorSecundary"
+            android:textCursorDrawable="@color/colorPrimary" android:background="@drawable/background_texto_login"
+            android:padding="12sp" android:autofillHints=""/>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:map="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
@@ -35,7 +40,9 @@
             android:id="@+id/bt_salvar_ponto_coleta" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/bt_cancelar_ponto_coleta"/>
+            app:layout_constraintBottom_toTopOf="@+id/bt_cancelar_ponto_coleta"
+            android:background="@drawable/background_botao_login" android:textColor="@color/colorWhite"
+            android:padding="12sp"/>
     <Button
             android:text="@string/cancelar"
             android:layout_width="0dp"
@@ -43,5 +50,6 @@
             android:id="@+id/bt_cancelar_ponto_coleta" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:background="@drawable/background_botao_login"
+            android:textColor="@color/colorWhite" android:padding="12sp"/>
 </android.support.constraint.ConstraintLayout>

@@ -15,9 +15,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.RemoverPontoDeColeta">
+        <activity
+                android:name=".activity.RemoverPontoDeColeta"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".activity.AdicionarPontoDeColeta">
+        <activity
+                android:name=".activity.AdicionarPontoDeColeta"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".activity.SplashActivity"
@@ -54,7 +58,7 @@
         </activity>
         <activity
                 android:name=".activity.EditarPerfilActivity"
-                android:parentActivityName=".activity.EditarPerfilActivity">
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".activity.CadastroActivity"

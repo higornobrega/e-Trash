@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_login"
-        tools:context=".activity.activity_login">
+        tools:context=".activity.CadastroActivity">
     <ImageView
             android:layout_width="170dp"
             android:layout_height="230dp" app:srcCompat="@drawable/logo"
@@ -27,7 +27,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:padding="12sp" android:textColor="@color/colorWhite"
             android:textColorLink="@color/colorSecundary" android:textColorHighlight="@color/colorSecundary"
-            android:hint="Nome completo" android:textColorHint="@color/colorWhite"/>
+            android:hint="@string/nome" android:textColorHint="@color/colorWhite"
+            android:textCursorDrawable="@color/colorPrimary"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -40,7 +41,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:hint="@string/e_mail" android:padding="12sp"
             android:textColor="@color/colorWhite" android:textColorHighlight="@color/colorSecundary"
-            android:textColorLink="@color/colorSecundary" android:textColorHint="@color/colorWhite"/>
+            android:textColorLink="@color/colorSecundary" android:textColorHint="@color/colorWhite"
+            android:textCursorDrawable="@color/colorPrimary"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -52,7 +54,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:hint="@string/senha"
             android:textColorHint="@color/colorWhite" android:padding="12sp" android:textColor="@color/colorWhite"
-            android:textColorHighlight="@color/colorSecundary" android:textColorLink="@color/colorSecundary"/>
+            android:textColorHighlight="@color/colorSecundary" android:textColorLink="@color/colorSecundary"
+            android:textCursorDrawable="@color/colorPrimary"/>
     <Button
             android:text="Cadastrar"
             android:layout_width="0dp"

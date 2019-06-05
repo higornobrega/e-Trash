@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 		}
 
 		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0.0f, locationListener)
+			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 120000, 5.0f, locationListener)
 		}
 	}
 
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 				* 4) Location listener (para recebermos as atualizações)
 				* */
 				if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-					locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0.0f, locationListener)
+					locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 120000, 5.0f, locationListener)
 				}
 			}
 
@@ -178,7 +178,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 		// Handle navigation view item clicks here.
 		when (item.itemId) {
 			R.id.nav_perfil -> {
-
+				val intent = Intent(this, EditarPerfilActivity::class.java)
+				startActivity(intent)
 			}
 			R.id.nav_agendamentos -> {
 

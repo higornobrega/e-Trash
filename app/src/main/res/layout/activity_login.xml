@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_login"
-        tools:context=".activity.activity_login">
+        tools:context=".activity.LoginActivity">
     <ImageView
             android:layout_width="170dp"
             android:layout_height="230dp" app:srcCompat="@drawable/logo"
@@ -28,7 +28,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/et_login_email" android:padding="12dp"
-            android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorSecundary"/>
+            android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorPrimary"
+            android:textColorHighlight="@color/colorSecundary"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -41,7 +42,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" android:padding="12dp"
-            android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorSecundary"/>
+            android:textColorLink="@color/colorSecundary" android:textCursorDrawable="@color/colorPrimary"
+            android:textColorHighlight="@color/colorSecundary"/>
     <Button
             android:text="Entrar"
             android:layout_width="0dp"
