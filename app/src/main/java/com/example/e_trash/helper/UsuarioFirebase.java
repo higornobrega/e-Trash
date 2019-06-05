@@ -2,6 +2,7 @@ package com.example.e_trash.helper;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
+import com.example.e_trash.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,5 +36,22 @@ public class UsuarioFirebase {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public static Usuario getDadosUsuarioLogado(){
+
+        FirebaseUser firebaseUser = getUsuarioAtual();
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail(firebaseUser.getEmail());
+        usuario.setNome(firebaseUser.getDisplayName());
+        usuario.setId(firebaseUser.getUid());
+        /*
+        if( firebaseUser.getPhotoUrl() == null){
+            usuario.setCaminhoFoto("");
+        }else {
+            usuario.setCaminhoFoto ( firebaseUser.getPhotoUrl().toString());
+        }
+        */
+        return usuario;
     }
 }
