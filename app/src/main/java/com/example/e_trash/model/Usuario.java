@@ -12,6 +12,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String caminhoFoto;
 
     public Usuario() {
     }
@@ -32,7 +33,7 @@ public class Usuario {
         usuarioMap.put("email",getEmail());
         usuarioMap.put("nome",getNome());
         usuarioMap.put("id",getId());
-       // usuarioMap.put("caminhoFoto", getCaminhoFoto());
+        usuarioMap.put("caminhoFoto", getCaminhoFoto());
         return usuarioMap;
     }
 
@@ -66,5 +67,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
     }
 }
