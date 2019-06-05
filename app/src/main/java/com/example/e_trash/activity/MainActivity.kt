@@ -194,7 +194,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 				startActivity(intent)
 			}
 			R.id.nav_rem_ponto_coleta -> {
-
+				val intent = Intent(this, RemoverPontoDeColeta::class.java)
+				startActivity(intent)
 			}
 		}
 		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
