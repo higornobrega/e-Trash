@@ -1,5 +1,6 @@
 package com.example.e_trash.helper;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import com.example.e_trash.model.Usuario;
@@ -37,6 +38,27 @@ public class UsuarioFirebase {
             e.printStackTrace();
         }
     }
+    public static void atualizarFotoUsuario(Uri url){
+
+        try {
+            FirebaseUser usuarioLogado = getUsuarioAtual();
+            UserProfileChangeRequest profile = new UserProfileChangeRequest
+                    .Builder()
+                    .setPhotoUri(url)
+                    .build();
+            usuarioLogado.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if( !task.isSuccessful() ){
+                        Log.d("Perfil","Erro ao atualizar a foto de perfil.");
+                    }
+
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     public static Usuario getDadosUsuarioLogado(){
 
         FirebaseUser firebaseUser = getUsuarioAtual();
@@ -53,5 +75,8 @@ public class UsuarioFirebase {
         }
 
         return usuario;
+    }
+    public static String getIdentificadorUsuario(){
+        return getUsuarioAtual().getUid();
     }
 }

@@ -10,12 +10,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.*;
+import com.bumptech.glide.Glide;
 import com.example.e_trash.R;
 import com.example.e_trash.helper.ConfiguracaoFirebase;
 import com.example.e_trash.helper.UsuarioFirebase;
 import com.example.e_trash.model.Usuario;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -30,6 +32,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private Usuario usuarioLogado;
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageRef;
+    private String identificadorUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
         storageRef = ConfiguracaoFirebase.getFirebaseStorage();
+        identificadorUsuario = UsuarioFirebase.getIdentificadorUsuario();
         //Botão voltar
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
@@ -46,6 +50,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
         inicializarComponentes();
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
         editNomePerfil.setText( usuarioPerfil.getDisplayName());
+
+        Uri url = usuarioPerfil.getPhotoUrl();
+        if(url != null){
+            Glide.with(EditarPerfilActivity.this)
+                    .load(url)
+                    .into( avatar);
+        }else{
+            avatar.setImageResource(R.drawable.avatar);
+        }
+
 
         buttonSalvarAlteracoes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +109,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
 
                     //Salvar imagem no firebase
-                    StorageReference imagemRef = storageRef.child("imagens").child("perfil").child("<id-usuario>.jpeg");
+                    StorageReference imagemRef = storageRef.child("imagens").child("perfil").child( identificadorUsuario + ".jpeg");
                     UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -106,6 +120,14 @@ public class EditarPerfilActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Toast.makeText(EditarPerfilActivity.this,"Sucesso ao fazer upload da imagem.",Toast.LENGTH_SHORT).show();
+
+                            taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+
+                                    atualizarFotoUsuario(uri);
+                                }
+                            });
                         }
                     });
                 }
@@ -113,6 +135,12 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    private void atualizarFotoUsuario(Uri url){
+        UsuarioFirebase.atualizarFotoUsuario(url);
+        usuarioLogado.setCaminhoFoto(url.toString());
+        usuarioLogado.atualizar();
+        Toast.makeText(EditarPerfilActivity.this, "Sua foto foi atualizada!", Toast.LENGTH_SHORT).show();
     }
 
     public void inicializarComponentes(){
