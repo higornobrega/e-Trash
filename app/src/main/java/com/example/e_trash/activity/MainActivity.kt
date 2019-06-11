@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 		auth = ConfiguracaoFirebase.getReferenciaAutenticacao()
 
 		// Validar permissoes
+		pedirPermissaoGPS()
 		Permissao.validarPermissoes(permissoes, this, 1)
 
 		val mapFragment = supportFragmentManager
@@ -115,7 +116,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 		for (permissaoResultado in grantResults) {
 			if (permissaoResultado == PackageManager.PERMISSION_DENIED) {
-				alertaValidacaoPermissao()
+					alertaValidacaoPermissao()
 			}
 			else {
 				//Recuperar localizacao do usuario
@@ -131,6 +132,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 				}
 			}
 
+		}
+	}
+
+	fun pedirPermissaoGPS() {
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 0)
 		}
 	}
 

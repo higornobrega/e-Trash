@@ -2,11 +2,15 @@ package com.example.e_trash.activity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.*;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.e_trash.R;
@@ -15,6 +19,7 @@ import java.util.List;
 
 public class AdicionarLixo extends AppCompatActivity {
     private EditText campoEndereco;
+    private Button botaoTirarFoto;
     private LocationManager locationManager;
     private Location location;
     private Address endereco;
@@ -26,17 +31,41 @@ public class AdicionarLixo extends AppCompatActivity {
 
         inicializarComponentes();
         recuperarLocalizacaoUsuario();
+        checarPermissaoCamera();
+
+        botaoTirarFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tirarFoto();
+            }
+        });
     }
 
     private void inicializarComponentes() {
         campoEndereco = findViewById(R.id.et_endereco);
+        botaoTirarFoto = findViewById(R.id.bt_camera);
+    }
+
+    private void checarPermissaoCamera() {
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA}, 0);
+        }
+    }
+
+    public  void tirarFoto() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 1);
     }
 
     private void recuperarLocalizacaoUsuario() {
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
         }
         else {
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
