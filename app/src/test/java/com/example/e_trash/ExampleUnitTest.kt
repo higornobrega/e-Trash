@@ -49,7 +49,7 @@ class ExampleUnitTest {
 
         assertEquals(null, lixo.id)
         assertEquals("Lixo1", lixo.nome)
-        //assertEquals(-52.4481016, lixo.longitude)
+        assert((-52.4481016).equals(lixo.longitude))
         //assertEquals(-23.0720325, lixo.latitude)
         assertEquals("Informações lixo1", lixo.informacoes)
         assertEquals(user.id, lixo.idUsuario)
@@ -117,6 +117,15 @@ class ExampleUnitTest {
         assertEquals(user.id, lixo.idUsuario)
         assertEquals("Rua Lixo1.1", lixo.endereco)
         assertEquals("Caminho foto lixo1.1", lixo.caminhoFoto)
+
+    }
+    @Test
+    fun AtualizarLixop() {
+        val user = Usuario()
+        user.nome = "bruno"
+        user.email = "brunodesouza@gmail.com"
+        user.senha = "12345"
+
 
     }
 
