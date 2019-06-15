@@ -4,14 +4,17 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.*;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.example.e_trash.R;
 import java.io.IOException;
@@ -23,6 +26,8 @@ public class AdicionarLixo extends AppCompatActivity {
     private LocationManager locationManager;
     private Location location;
     private Address endereco;
+    private Bitmap imagem;
+    private ImageView imagem_lixo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class AdicionarLixo extends AppCompatActivity {
     private void inicializarComponentes() {
         campoEndereco = findViewById(R.id.et_endereco);
         botaoTirarFoto = findViewById(R.id.bt_camera);
+        imagem_lixo = findViewById(R.id.imagem_lixo);
     }
 
     private void checarPermissaoCamera() {
@@ -58,6 +64,16 @@ public class AdicionarLixo extends AppCompatActivity {
     public  void tirarFoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if( requestCode == 1 && resultCode == RESULT_OK){
+            Bundle extras = data.getExtras();
+            imagem = (Bitmap) extras.get("data");
+            imagem_lixo.setImageBitmap(imagem);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void recuperarLocalizacaoUsuario() {

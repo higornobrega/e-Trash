@@ -11,6 +11,7 @@ public class Lixo {
     private String caminhoFoto;
 
     public Lixo() {
+
     }
 
     public String getId() {
