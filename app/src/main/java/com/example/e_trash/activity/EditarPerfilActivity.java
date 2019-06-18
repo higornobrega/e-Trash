@@ -68,6 +68,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 UsuarioFirebase.atualizarNomeUsuario(nomeAtualizado);
                 usuarioLogado.setNome(nomeAtualizado);
                 usuarioLogado.atualizar();
+                finish();
             }
         });
 

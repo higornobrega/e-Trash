@@ -1,5 +1,8 @@
 package com.example.e_trash.model;
 
+import com.example.e_trash.helper.ConfiguracaoFirebase;
+import com.google.firebase.database.DatabaseReference;
+
 public class Lixo {
     private String id;
     private String idUsuario;
@@ -11,9 +14,20 @@ public class Lixo {
     private String caminhoFoto;
 
     public Lixo() {
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference lixoRef = firebaseRef.child("lixos");
+        String idLixo = lixoRef.push().getKey();
+        setId( idLixo);
+    }
+    public boolean salvar(){
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference lixosRef = firebaseRef.child("lixos")
+                .child(getIdUsuario())
+                .child(getId());
+        lixosRef.setValue(this);
+        return true;
 
     }
-
     public String getId() {
         return id;
     }
