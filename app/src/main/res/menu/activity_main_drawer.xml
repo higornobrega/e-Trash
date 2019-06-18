@@ -22,6 +22,15 @@
                 android:title="@string/menu_tools"/>
     </group>
 
+    <item android:title="Recolhedores">
+        <menu>
+            <item
+                    android:id="@+id/nav_lixos"
+                    android:icon="@drawable/ic_delete_24dp"
+                    android:title="@string/lixos"/>
+        </menu>
+    </item>
+
     <item android:title="Administração">
         <menu>
             <item

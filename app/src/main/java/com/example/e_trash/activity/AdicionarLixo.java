@@ -14,8 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,16 +26,14 @@ import com.example.e_trash.helper.UsuarioFirebase;
 import com.example.e_trash.model.Lixo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.security.PrivilegedAction;
 import java.util.List;
 
 public class AdicionarLixo extends AppCompatActivity {
+    private EditText nomeLixo;
     private EditText campoEndereco;
     private Button botaoTirarFoto;
     private EditText informacoesLixo;
@@ -50,10 +46,7 @@ public class AdicionarLixo extends AppCompatActivity {
     private ImageView imagem_lixo;
     private Button publicar_foto;
     private static final int SELECAO_CAMERA = 100;
-    private String[] permissoesNecessarias = new String[]{
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA
-    };
+    private String permissoesNecessarias[] = new String[]{Manifest.permission.CAMERA};
 
 
     @Override
@@ -69,7 +62,10 @@ public class AdicionarLixo extends AppCompatActivity {
         botaoTirarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onPause();
+                onStop();
                 tirarFoto();
+                onResume();
             }
         });
 
@@ -85,6 +81,7 @@ public class AdicionarLixo extends AppCompatActivity {
     }
 
     private void inicializarComponentes() {
+        nomeLixo = findViewById(R.id.et_nomeLixo);
         campoEndereco = findViewById(R.id.et_endereco);
         publicar_foto = findViewById(R.id.publicar_foto);
         botaoTirarFoto = findViewById(R.id.bt_camera);
@@ -100,10 +97,14 @@ public class AdicionarLixo extends AppCompatActivity {
     }
     private void publicarLixo(){
         final Lixo lixo = new Lixo();
+        lixo.setNome(nomeLixo.getText().toString());
         lixo.setIdUsuario(idUsuarioLogado);
         lixo.setInformacoes(informacoesLixo.getText().toString());
+        lixo.setEndereco(campoEndereco.getText().toString());
+        lixo.setLatitude(endereco.getLatitude());
+        lixo.setLongitude(endereco.getLongitude());
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        imagem.compress(Bitmap.CompressFormat.JPEG,70, baos);
+        imagem.compress(Bitmap.CompressFormat.JPEG,100, baos);
         byte[] dadosImagem = baos.toByteArray();
         StorageReference storageRef = ConfiguracaoFirebase.getFirebaseStorage();
         StorageReference imagemRef = storageRef
@@ -232,15 +233,15 @@ public class AdicionarLixo extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch ( item.getItemId() ){
-            case R.id.publicar_foto :
-                publicarLixo();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch ( item.getItemId() ){
+//            case R.id.publicar_foto :
+//                publicarLixo();
+//                break;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 }

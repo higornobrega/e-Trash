@@ -14,6 +14,7 @@
     <string name="cidade">Cidade:</string>
     <string name="estado">Estado:</string>
     <string name="pais">País:</string>
+    <string name="nome_lixo">Nome do lixo</string>
     <string name="informacoes">Informações sobre o lixo</string>
     <string name="tirar_foto">Tirar foto</string>
     <string name="fazer_publicacao">Fazer publicação</string>
@@ -33,6 +34,7 @@
     <string name="menu_agendamentos">Agendamentos</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
+    <string name="lixos">Lixos</string>
     <string name="menu_add_ponto_coleta">Adicionar ponto de coleta</string>
     <string name="menu_rem_ponto_coleta">Remover ponto de coleta</string>
 </resources>

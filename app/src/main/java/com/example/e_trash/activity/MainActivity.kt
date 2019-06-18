@@ -11,7 +11,6 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
@@ -37,7 +36,7 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 	private lateinit var auth: FirebaseAuth
 	private lateinit var mMap: GoogleMap
-	private val permissoes = arrayOf<String>(android.Manifest.permission.ACCESS_FINE_LOCATION)
+	private val permissoes = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
 	private lateinit var locationManager: LocationManager
 	private lateinit var locationListener: LocationListener
 
@@ -196,6 +195,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 			}
 			R.id.nav_tools -> {
 
+			}
+			R.id.nav_lixos -> {
+				val intent = Intent(this, VizualizarLixo::class.java)
+				startActivity(intent)
 			}
 			R.id.nav_add_ponto_coleta -> {
 				val intent = Intent(this, AdicionarPontoDeColeta::class.java)

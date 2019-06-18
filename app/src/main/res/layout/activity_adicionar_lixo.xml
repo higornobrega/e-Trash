@@ -14,7 +14,7 @@
             android:inputType="textPersonName"
             android:text="Name"
             android:ems="10"
-            android:id="@+id/editText" android:layout_marginEnd="16dp"
+            android:id="@+id/et_nomeLixo" android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
             app:layout_constraintTop_toTopOf="parent" android:background="@drawable/background_texto_login"
@@ -43,7 +43,7 @@
             android:id="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" android:textSize="18sp" android:textColor="@color/colorWhite"
-            app:layout_constraintTop_toBottomOf="@+id/editText"/>
+            app:layout_constraintTop_toBottomOf="@+id/et_nomeLixo"/>
     <Button
             android:text="@string/tirar_foto"
             android:layout_width="0dp"
