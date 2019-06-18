@@ -41,7 +41,6 @@ public class LixoAdapter extends RecyclerView.Adapter<LixoAdapter.MyViewHolder> 
 
         Glide.with(context).load(uriFotoUsuario).into(myViewHolder.avatar);
         Glide.with(context).load(uriFotoLixo).into(myViewHolder.imagemLixo);
-        myViewHolder.nomeUsuario.setText(lixo.getNomeUsuario());
         myViewHolder.nomeLixo.setText("Nome do lixo: " + lixo.getNome());
         myViewHolder.informacoes.setText("Informações: " + lixo.getInformacoes());
         myViewHolder.endereco.setText("Endereço: " + lixo.getEndereco());
