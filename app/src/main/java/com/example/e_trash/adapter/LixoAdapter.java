@@ -1,6 +1,7 @@
 package com.example.e_trash.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.e_trash.R;
+import com.example.e_trash.activity.ComentatiosActivity;
 import com.example.e_trash.model.Lixo;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -34,13 +36,22 @@ public class LixoAdapter extends RecyclerView.Adapter<LixoAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        Lixo lixo = listaLixo.get(i);
+        final Lixo lixo = listaLixo.get(i);
         // Carregando os dados do feed
         Uri uriFotoUsuario = Uri.parse(lixo.getCaminhoFoto());
         Uri uriFotoLixo = Uri.parse(lixo.getCaminhoFoto());
 
         Glide.with(context).load(uriFotoUsuario).into(myViewHolder.avatar);
         Glide.with(context).load(uriFotoLixo).into(myViewHolder.imagemLixo);
+        myViewHolder.botaoComentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ComentatiosActivity.class);
+                intent.putExtra("idPostagem", lixo.getId());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         myViewHolder.nomeLixo.setText("Nome do lixo: " + lixo.getNome());
         myViewHolder.informacoes.setText("Informações: " + lixo.getInformacoes());
         myViewHolder.endereco.setText("Endereço: " + lixo.getEndereco());

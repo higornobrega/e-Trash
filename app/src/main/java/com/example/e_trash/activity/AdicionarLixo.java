@@ -62,10 +62,7 @@ public class AdicionarLixo extends AppCompatActivity {
         botaoTirarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onPause();
-                onStop();
                 tirarFoto();
-                onResume();
             }
         });
 
@@ -104,7 +101,7 @@ public class AdicionarLixo extends AppCompatActivity {
         lixo.setLatitude(endereco.getLatitude());
         lixo.setLongitude(endereco.getLongitude());
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        imagem.compress(Bitmap.CompressFormat.JPEG,100, baos);
+        imagem.compress(Bitmap.CompressFormat.JPEG,1000, baos);
         byte[] dadosImagem = baos.toByteArray();
         StorageReference storageRef = ConfiguracaoFirebase.getFirebaseStorage();
         StorageReference imagemRef = storageRef
