@@ -29,6 +29,8 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+
+    <string name="comentarios">Comentários</string>
     <string name="action_logout">Deslogar</string>
 
     <string name="menu_perfil">Perfil</string>
