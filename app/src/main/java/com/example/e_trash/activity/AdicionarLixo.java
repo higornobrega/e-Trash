@@ -54,7 +54,6 @@ public class AdicionarLixo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_lixo);
         Permis.validarPermissoes(permissoesNecessarias, this, 1);
-        //imagemFiltro = imagem.copy(imagem.getConfig(), true );
         inicializarComponentes();
         recuperarLocalizacaoUsuario();
         checarPermissaoCamera();
@@ -155,15 +154,6 @@ public class AdicionarLixo extends AppCompatActivity {
         }
     }
 
-   /* @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if( requestCode == 1 && resultCode == RESULT_OK){
-            Bundle extras = data.getExtras();
-            imagem = (Bitmap) extras.get("data");
-            imagem_lixo.setImageBitmap(imagem);
-        }
-    }*/
    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -228,17 +218,5 @@ public class AdicionarLixo extends AppCompatActivity {
         }
         return address;
     }
-
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch ( item.getItemId() ){
-//            case R.id.publicar_foto :
-//                publicarLixo();
-//                break;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
 
 }
